@@ -13,17 +13,9 @@ jobs:
       
     # Check out the repo to the app service VM
     - uses: actions/checkout@v1
-    
-   # Deploy a dacpac file to a provisioned SQL server
-    - name: Azure SQL Deploy
-      uses: Azure/sql-action@v1
-      with:
-        server-name: jefmartiserv.database.windows.net
-        connection-string: ${{ secrets.AZURE_SQL_CONNECTION_STRING }}
-        dacpac-package: './data.dacpac'
-             
+               
     # Use docker login to log into ACR
-    - name: Docker login
+    - name: Docker login to ACR
       uses: azure/docker-login@v1
       with:
         login-server: jefmartiregistry.azurecr.io
@@ -31,6 +23,7 @@ jobs:
         password: ${{ secrets.REGISTRY_PASSWORD }}
         
     # Build and push the image to Azure Container Registry
+    - name: Build and Push container to ACR
     - run: |
         docker build -t jefmartiregistry.azurecr.io/wincontainercore:${{ github.sha }} WinContainerCore/WinContainerCore/
         docker push jefmartiregistry.azurecr.io/wincontainercore:${{ github.sha }}
@@ -42,7 +35,16 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
         
     # Deploy your container to App Service
-    - uses: azure/webapps-deploy@releases/v2
+    - name: Deploy Container to Azure App Service
+      uses: azure/webapps-deploy@releases/v2
       with:
         app-name: 'jefmarti-dotnetcorewincont'
         images: 'jefmartiregistry.azurecr.io/wincontainercore:${{ github.sha }}'
+    
+    # Deploy a dacpac file to a provisioned SQL server
+    - name: Azure SQL Deploy
+      uses: Azure/sql-action@v1
+      with:
+        server-name: jefmartiserv.database.windows.net
+        connection-string: ${{ secrets.AZURE_SQL_CONNECTION_STRING }}
+        dacpac-package: './data.dacpac'
