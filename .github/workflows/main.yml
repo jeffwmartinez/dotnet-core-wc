@@ -14,35 +14,35 @@ jobs:
     # Check out the repo to the app service VM
     - uses: actions/checkout@v1
     
-    # Authenticate a Service Principal to continuously deploy to your provisioned app service
-  #  - name: Azure Authentication
-  #    uses: azure/login@v1
-  #    with:
-  #        creds: ${{ secrets.AZURE_CREDENTIALS }}
-    
-    # Deploy a dacpac file to a provisioned SQL server
-   # - name: Azure SQL Deploy
-   #   uses: Azure/sql-action@v1
-   #   with:
-   #     server-name: jefxmserver.database.windows.net
-   #     connection-string: ${{ secrets.AZURE_SQL_CONNECTION_STRING }}
-   #     dacpac-package: './datafile.dacpac'
-        
+   # Deploy a dacpac file to a provisioned SQL server
+    - name: Azure SQL Deploy
+      uses: Azure/sql-action@v1
+      with:
+        server-name: jefmartiserv.database.windows.net
+        connection-string: ${{ secrets.AZURE_SQL_CONNECTION_STRING }}
+        dacpac-package: './data.dacpac'
+             
     # Use docker login to log into ACR
     - name: Docker login
       uses: azure/docker-login@v1
       with:
-        login-server: jefmartimregistry.azurecr.io
+        login-server: jefmartiregistry.azurecr.io
         username: ${{ secrets.REGISTRY_USERNAME }}
         password: ${{ secrets.REGISTRY_PASSWORD }}
         
     # Build and push the image to Azure Container Registry
     - run: |
-        docker build -t jefmartimregistry.azurecr.io/wincontainerore:${{ github.sha }} WinContainerCore/WinContainerCore/
-        docker push jefmartimregistry.azurecr.io/wincontainercore:${{ github.sha }}
+        docker build -t jefmartiregistry.azurecr.io/wincontainercore:${{ github.sha }} WinContainerCore/WinContainerCore/
+        docker push jefmartiregistry.azurecr.io/wincontainercore:${{ github.sha }}
     
-     # Deploy your container to App Service
-    #- uses: azure/webapps-deploy@releases/v2
-    #  with:
-    #    app-name: 'jefxm-windowscont'
-    #    images: 'jxmregistry.azurecr.io/windowscontainer:${{ github.sha }}'
+    # Authenticate a Service Principal to continuously deploy to your provisioned app service
+    - name: Azure Authentication
+      uses: azure/login@v1
+      with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+        
+    # Deploy your container to App Service
+    - uses: azure/webapps-deploy@releases/v2
+      with:
+        app-name: 'jefmarti-dotnetcorewincont'
+        images: 'jefmartiregistry.azurecr.io/wincontainercore:${{ github.sha }}'
