@@ -1,8 +1,37 @@
-﻿@{
+﻿@model WinContainerCore.Models.Todo
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-   
-</div>
+    <div class="text-center">
+        <h1 class="display-4">Welcome</h1>
+        <h3>Add New Tasks</h3>
+        <hr />
+        <form asp-action="PostTodo" asp-controller="Todo" method="post" class="mt-5">
+            <div asp-validation-summary="All" class="text-danger">
+            </div>
+            <div class="form-group row col-md-6 mx-auto">
+                <label asp-for="Title" class="col-sm-2 col-form-label"></label>
+                <div class="col mx-auto">
+                    <input asp-for="Title" class="form-control" placeholder="Name">
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row col-md-6 mx-auto">
+                <label asp-for="Description" class="col-sm-2 col-form-label"></label>
+                <div class="col mx-auto">
+                    <input asp-for="Description" class="form-control">
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col">
+                    <button type="submit" class="btn btn-dark float-right" style="width:auto">
+                        Create New Task
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
