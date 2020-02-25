@@ -30,6 +30,6 @@ ENTRYPOINT ["dotnet", "WinContainerCore.dll"]
 
 # Steps to change in the dockerfile
 # 1. If deploying to Azure, change nanoserver ltsc to 1809 - (1903 is not supported)
-# 2. Copy needs to change. . .
-# 3. WORKDIR needs to change to sRC
-# 4. 
+# 2. COPY = *.csproj ./
+# 3. RUN = dotnet restore "windowscontainercore.csproj"
+# 4. WORKDIR = "/src"
