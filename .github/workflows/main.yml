@@ -32,14 +32,14 @@ jobs:
     - name: Docker login
       uses: azure/docker-login@v1
       with:
-        login-server: jefmartimregistry.azurecr.io
+        login-server: jefmartiregistry.azurecr.io
         username: ${{ secrets.REGISTRY_USERNAME }}
         password: ${{ secrets.REGISTRY_PASSWORD }}
         
     # Build and push the image to Azure Container Registry
     - run: |
-        docker build -t jefmartimregistry.azurecr.io/wincontainercore:${{ github.sha }} WinContainerCore/WinContainerCore/
-        docker push jefmartimregistry.azurecr.io/wincontainercore:${{ github.sha }}
+        docker build -t jefmartiregistry.azurecr.io/wincontainercore:${{ github.sha }} WinContainerCore/WinContainerCore/
+        docker push jefmartiregistry.azurecr.io/wincontainercore:${{ github.sha }}
     
      # Deploy your container to App Service
     #- uses: azure/webapps-deploy@releases/v2
