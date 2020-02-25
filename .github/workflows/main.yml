@@ -42,7 +42,7 @@ jobs:
         docker push jefmartiregistry.azurecr.io/wincontainercore:${{ github.sha }}
     
      # Deploy your container to App Service
-    #- uses: azure/webapps-deploy@releases/v2
-    #  with:
-    #    app-name: 'jefxm-windowscont'
-    #    images: 'jxmregistry.azurecr.io/windowscontainer:${{ github.sha }}'
+    - uses: azure/webapps-deploy@releases/v2
+      with:
+        app-name: 'jefmarti-dotnetcorewincont'
+        images: 'jefmartiregistry.azurecr.io/wincontainercore:${{ github.sha }}'
