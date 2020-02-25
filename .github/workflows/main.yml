@@ -20,7 +20,7 @@ jobs:
       with:
         server-name: jefmartiserv.database.windows.net
         connection-string: ${{ secrets.AZURE_SQL_CONNECTION_STRING }}
-   #     dacpac-package: './datafile.dacpac'
+        dacpac-package: './data.dacpac'
              
     # Use docker login to log into ACR
     - name: Docker login
