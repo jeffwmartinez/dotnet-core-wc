@@ -33,3 +33,4 @@ ENTRYPOINT ["dotnet", "WinContainerCore.dll"]
 # 2. COPY = *.csproj ./
 # 3. RUN = dotnet restore "windowscontainercore.csproj"
 # 4. WORKDIR = "/src"
+#
