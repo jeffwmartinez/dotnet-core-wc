@@ -8,9 +8,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using WinContainerCore.Data;
+using dotnetcorewc.Data;
 
-namespace WinContainerCore
+namespace dotnetcorewc
 {
     public class Startup
     {

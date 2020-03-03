@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using WinContainerCore.Data;
-using WinContainerCore.Models;
+using dotnetcorewc.Data;
+using dotnetcorewc.Models;
 
-namespace WinContainerCore.Controllers
+namespace dotnetcorewc.Controllers
 {
     [Route("api/[controller]")]
     //[ApiController]

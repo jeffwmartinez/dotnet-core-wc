@@ -9,24 +9,24 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-nanoserver-1809 AS build
 WORKDIR /src
-#COPY ["WinContainerCore/WinContainerCore.csproj", "WinContainerCore/"]
-#RUN dotnet restore "WinContainerCore/WinContainerCore.csproj"
+#COPY ["dotnetcorewc/dotnetcorewc.csproj", "dotnetcorewc/"]
+#RUN dotnet restore "dotnetcorewc/dotnetcorewc.csproj"
 COPY *.csproj ./
-RUN dotnet restore "wincontainercore.csproj"
+RUN dotnet restore "dotnetcorewc.csproj"
 
 COPY . .
-#WORKDIR "/src/WinContainerCore"
+#WORKDIR "/src/dotnetcorewc"
 WORKDIR "/src/"
 
-RUN dotnet build "WinContainerCore.csproj" -c Release -o /app/build
+RUN dotnet build "dotnetcorewc.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "WinContainerCore.csproj" -c Release -o /app/publish
+RUN dotnet publish "dotnetcorewc.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "WinContainerCore.dll"]
+ENTRYPOINT ["dotnet", "dotnetcorewc.dll"]
 
 # Steps to change in the dockerfile
 # 1. If deploying to Azure, change nanoserver ltsc to 1809 - (1903 is not supported)

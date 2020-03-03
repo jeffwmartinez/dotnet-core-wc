@@ -1,4 +1,4 @@
-﻿@model WinContainerCore.Models.Todo
+﻿@model dotnetcorewc.Models.Todo
 
 @{
     ViewData["Title"] = "Home Page";
@@ -7,7 +7,7 @@
 
     <div class="text-center">
         <h1 class="display-4">Welcome</h1>
-        <h3>Add New Tasks</h3>
+        <h3>Add Tasks</h3>
         <hr />
         <form asp-action="PostTodo" asp-controller="Todo" method="post" class="mt-5">
             <div asp-validation-summary="All" class="text-danger">

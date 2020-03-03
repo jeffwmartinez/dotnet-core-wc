@@ -1,6 +1,6 @@
 using System;
 
-namespace WinContainerCore.Models
+namespace dotnetcorewc.Models
 {
     public class ErrorViewModel
     {

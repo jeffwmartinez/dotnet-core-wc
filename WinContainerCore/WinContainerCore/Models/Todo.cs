@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WinContainerCore.Models
+namespace dotnetcorewc.Models
 {
     public class Todo
     {

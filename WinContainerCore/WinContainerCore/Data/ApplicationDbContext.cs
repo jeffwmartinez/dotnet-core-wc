@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using WinContainerCore.Models;
+using dotnetcorewc.Models;
 
-namespace WinContainerCore.Data
+namespace dotnetcorewc.Data
 {
     public class ApplicationDbContext : DbContext
     {
