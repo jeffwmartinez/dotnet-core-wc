@@ -25,8 +25,8 @@ jobs:
     # Build and push the image to Azure Container Registry
     - name: Build and Push container to ACR
       run: |
-        docker build -t jefmartiregistry.azurecr.io/wincontainercore:${{ github.sha }} WinContainerCore/WinContainerCore/
-        docker push jefmartiregistry.azurecr.io/wincontainercore:${{ github.sha }}
+        docker build -t jefmartiregistry.azurecr.io/dotnetcorewc:${{ github.sha }} WinContainerCore/WinContainerCore/
+        docker push jefmartiregistry.azurecr.io/dotnetcorewc:${{ github.sha }}
     
     # Authenticate a Service Principal to continuously deploy to your provisioned app service
     - name: Azure Authentication
@@ -39,8 +39,8 @@ jobs:
  #     uses: azure/webapps-deploy@releases/v2
       uses: azure/webapps-container-deploy@v1
       with:
-        app-name: 'jefmarti-dotnetcorewincont'
-        images: 'jefmartiregistry.azurecr.io/wincontainercore:${{ github.sha }}'
+        app-name: 'jefmarti-dotnet-core-wc'
+        images: 'jefmartiregistry.azurecr.io/dotnetcorewc:${{ github.sha }}'
     
     # Deploy a dacpac file to a provisioned SQL server
     - name: Azure SQL Deploy
