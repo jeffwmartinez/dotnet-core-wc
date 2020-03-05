@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace dotnetcorewc.Models
 {
-    public class Todo
+    public class TaskItem
     {
         public int ID { get; set; }
         public string Title { get; set; }

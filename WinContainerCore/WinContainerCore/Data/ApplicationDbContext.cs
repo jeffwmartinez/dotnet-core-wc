@@ -15,7 +15,7 @@ namespace dotnetcorewc.Data
 
         }
 
-        public DbSet<Todo> Tasks { get; set; }
+        public DbSet<TaskItem> Tasks { get; set; }
 
     }
 }
