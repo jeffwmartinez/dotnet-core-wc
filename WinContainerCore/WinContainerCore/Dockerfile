@@ -33,4 +33,4 @@ ENTRYPOINT ["dotnet", "dotnetcorewc.dll"]
 # 2. COPY = *.csproj ./
 # 3. RUN = dotnet restore "windowscontainercore.csproj"
 # 4. WORKDIR = "/src"
-#
+# These need to be changed to build the dockerfile locally, then it can run through the actions, then patched in the cloud
