@@ -1,4 +1,4 @@
-# .NET Framework Sample w/ Continuous Deployment
+# .NET Core Sample w/ Continuous Deployment
 A containerized (Windows) .NET Core Task App setup with continuous deployment through **GitHub Actions** to Azure App Service.
 
 ## Directions
