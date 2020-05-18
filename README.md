@@ -1,9 +1,20 @@
-# .NET Core Windows Container on App Service
+# .NET Framework Sample w/ Continuous Deployment
+A containerized (Windows) .NET Core Task App setup with continuous deployment through **GitHub Actions** to Azure App Service.
 
-This project is a demonstration of a .NET Core Windows Container on Azure App Service with CI/CD setup through GitHub Actions.  Using Azure SQL for the database and Azure Container Registry for the container. </br>
+## Directions
+1. To use this repository, *fork the repo* 
+2. *Provision appropriate resources* in Azure and/or Docker Hub
+3. *Add/replace the github secrets variables with your own secrets* appropriate from each resource:<br/>
 
-Type: .NET Core Windows Container </bR>
-Continuous Deployment Actions: ACR, App Service, SQL </br>
+      - APP_NAME = your web apps name
+      - AZURE_CREDENTIALS = your service principal output
+      - AZURE_SQL_CONNECTION_STRING = database connection string
+      - DATABASE_SERVER_NAME = name of your server
+      - IMAGE_NAME = name of your image that will upload to your registry
+      - REGISTRY_NAME = name of your registry (docker hub or acr)
+      - REGISTRY_USERNAME = your registry username
+      - REGISTRY_PASSWORD = your registry password
+  
+3. *Commit changes to your master branch* that will trigger your build
 
-Status: Working great
 
